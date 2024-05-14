@@ -7,4 +7,4 @@ The top priority is adding proper login so this is only temporary.
 execute the script `./gog-better-discount-checker.py`
 
 The script will print out a list of games with a better discount than what you paid for them.  
-It will sometimes print ex. "Error! Product id: 1162551261" if it can not get the price (normally for delisted games or limited time bundles).
+It will sometimes print ex. "Error! Product id: 1162551261" if it can not get the price (normally for delisted games or limited time bundles that are no longer available).
