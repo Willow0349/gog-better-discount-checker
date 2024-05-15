@@ -39,7 +39,7 @@ def _check_page(page):
 
 def make_request(params):
     request_url = f"{base_url}?ids={params['ids']}&currency={params['currency']}&countryCode={params['countryCode']}"
-    print(f"Request URL: {request_url}")  # Print the request URL
+#    print(f"Request URL: {request_url}")  # Print the request URL
     response = requests.get(request_url)  # Use the full URL directly
     if response.status_code == 200:
         return response.json()
@@ -69,9 +69,9 @@ for currency, ids_dict in purchases_dict.items():
             currentPrice = int(re.sub(r'\D', '', item['_embedded']['prices'][0]['finalPrice']))
             try:
                 if purchases_dict[currency][id][0] <= currentPrice:
-                    print ("No Problems: ", id)
+#                    print ("No Problems: ", id)
                     pass
                 else:
-                    print ('\nOH! NO! "', purchases_dict[currency][id][1], '" is cheaper\n')
+                    print ('\nGOOD NEWS!', purchases_dict[currency][id][1], 'is cheaper\n')
             except:
                 print ("Error! Product id: ", id)
