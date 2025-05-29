@@ -44,7 +44,8 @@ def _checkGame(cookie, id, session):
     elif game["cdKey"] != "":
         print ("Serial Keys Available: ", game["title"])
     elif game["cdKey"] == "" and game["textInformation"] == "":
-        print ("No Serial keys Required: ", game["title"])
+        #print ("No Serial keys Required: ", game["title"])
+        pass
     else:
         print ("\nERROR: ", game["title"])
 
@@ -61,7 +62,7 @@ def _checkPage(game):
                 gamesDict["depleted"].append(game["id"])
                 return
 
-    print ("NO TAGS")
+    #print ("NO TAGS")
     gamesDict["unknown"].append(game["id"])
 
 session = requests.Session()
@@ -85,11 +86,11 @@ print ("Checking page: ", page["page"])
 for game in page["products"]:
     _checkPage(game)
 
-#for pageNumber in range(2, totalPages + 1):
-#    page = _getPage(cookie, pageNumber, session)
-#    print ("Checking page: ", page["page"])
-#    for game in page["products"]:
-#        _checkPage(game)
+for pageNumber in range(2, totalPages + 1):
+    page = _getPage(cookie, pageNumber, session)
+    print ("Checking page: ", page["page"])
+    for game in page["products"]:
+        _checkPage(game)
 
 for id in gamesDict["depleted"]:
     _checkGame(cookie, id, session)
